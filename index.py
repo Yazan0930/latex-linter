@@ -16,7 +16,7 @@ mage = r"""
                                 88 `"8bbdP"Y8   "Y888 `"Ybbd8"' 8P'     `Y8
 
 
-                                
+
 """
 
 
@@ -26,7 +26,6 @@ def main():
     betterGitSupport = jsonData["betterGitSupport"]
     lineBreakSize = jsonData["lineBreakSize"]
     jsonFile.close()
-    counter = 0
     fileName = ""
 
     while(TRUE):
@@ -49,25 +48,25 @@ def main():
         choice = input("What do you want to do? ")
         if choice in "Aa":
             fileName = input("Enter the file name: ")
-            counter += 1
         elif choice in "Bb":
             betterGitSupport = not betterGitSupport
         elif choice in "Cc":
             lineBreakSize = int(input("Enter number of lines: "))
         elif choice in "Dd":
             if fileName == "":
-                print("No file selected")
+                print("\nNo file selected")
             else:
                 baseFile = open(fileName)
                 finalText = functions.linterLatex(baseFile, betterGitSupport, lineBreakSize)
-                newFile = open(f"File_{counter}.tex", "w")
+                newFile = open(f"Linter_{fileName}", "w")
                 newFile.write(finalText)
                 newFile.close()
                 baseFile.close()
+                print(f"\nUpdates are in the file Linter_{fileName}")
         elif choice in "Ee":
             print(finalText)
         elif choice in "Qq":
-            print("Bye, bye - and welcome back anytime!")
+            print("\nBye, bye - and welcome back anytime!")
             break
         else:
             print("Invalid input")
