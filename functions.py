@@ -1,10 +1,27 @@
 
-def addTaps(text):
+from re import L
+import json
+
+
+def startLintering(fileName):
+    baseFile = open(fileName)
+    # set Json Data in newLine and breakSentence
+    newLine, breakSentence = setJsonData()
+    finalText = linterLatex(baseFile, breakSentence, int(newLine))
+    newFile = open(f"Linter_{fileName}", "w")
+    newFile.write(finalText)
+    newFile.close()
+    baseFile.close()
+    print(f"\nUpdates are in the file Linter_{fileName}")
+
+
+
+def addTaps(text, tabs):
     # check if starts with \t
     if text[0] == "\t":
-        return text
+        return text.replace("\t", tabs*"\t")
     else:
-        return "\t" + text
+        return (tabs*"\t") + text
 
 def breakUpSentences(line, newLine = "\n"):
     listOfSigns = [":", ";", ",", ".", "!", "?"]
@@ -18,25 +35,30 @@ def breakUpSentences(line, newLine = "\n"):
 def addNewLines(line, number = 0):
     return (number * "\n") + line
 
+
 def linterLatex(f, betterGitSupport, lineBreakSize):
     finalText = "" # final text to be written to file
     begin = ""
     lines = 0
+    beginCounter = -1
 
     for line in f:
-        if "begin{" in line and "document" not in line or begin != "":
-            begin = line
-            if "begin{" not in line and "end{" not in line:
-                line = addTaps(line)
-                if betterGitSupport is True:
-                    finalText += breakUpSentences(line, "\n\t")
-                else:
-                    finalText += line
+        if "begin{" in line and "{document" not in line or begin != "":
+            if "begin{" in line:
+                begin = line
+                beginCounter += 1
+                finalText += addTaps(line, beginCounter)
+            elif "end{" in line:
+                finalText += addTaps(line, beginCounter)
+                beginCounter -= 1
+                if  beginCounter == -1:
+                    begin = ""
             else:
-                finalText += line
-            if "end{" in line:
-                begin = ""
-
+                if betterGitSupport is True:
+                    line = breakUpSentences(line, "\n" + ("\t" * (beginCounter + 1)))
+                    finalText += addTaps(line, beginCounter + 1)
+                else:
+                    finalText += addTaps(line, beginCounter + 1)
 
         elif betterGitSupport is True and "\\" != line[0] and "%" != line[0] and line != "\n":
             finalText += breakUpSentences(line, "\n")
@@ -66,3 +88,44 @@ def linterLatex(f, betterGitSupport, lineBreakSize):
         else:
             finalText += line
     return finalText
+
+
+
+def updateConfig(jsonData, key, value):
+    jsonData["custom"][key] = value
+    jsonFile = open("config.json", "w")
+    jsonFile.write(json.dumps(jsonData))
+    jsonFile.close()
+
+# get json data
+def getJsonData():
+    jsonFile = open("config.json")
+    jsonData = json.load(jsonFile)
+    jsonFile.close()
+    return jsonData
+
+# see if ther is a custom data in json file and get hte custom data
+def setJsonData():
+    jsonData = getJsonData()
+    # check if there is not empty custom data
+    if jsonData["custom"] != {}:
+        # get the custom data
+        if "newLine" in jsonData["custom"]:
+            newLine = jsonData["custom"]["newLine"]
+        else:
+            newLine = jsonData["difault"]["newLine"]
+        # if breakSentence in custom dictionary
+        if "breakSentence" in jsonData["custom"]:
+            breakSentence = jsonData["custom"]["breakSentence"]
+        else:
+            breakSentence = jsonData["difault"]["breakSentence"]
+    else:
+        newLine = jsonData["difault"]["newLine"]
+        breakSentence = jsonData["difault"]["breakSentence"]
+
+    # make breakSentence from string to boolean
+    if breakSentence == "True":
+        breakSentence = True
+    else:
+        breakSentence = False
+    return newLine, breakSentence

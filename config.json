@@ -1,4 +1,1 @@
-{
-    "betterGitSupport": false,
-    "lineBreakSize": 0
-}
+{"difault": {"breakSentence": false, "newLine": 0}, "custom": {"breakSentence": "True", "newLine": "0"}}
