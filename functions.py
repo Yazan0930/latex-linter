@@ -4,16 +4,20 @@ import json
 
 
 def startLintering(fileName):
-    baseFile = open(fileName)
-    # set Json Data in newLine and breakSentence
-    newLine, breakSentence = setJsonData()
-    finalText = linterLatex(baseFile, breakSentence, int(newLine))
-    newFile = open(f"Linter_{fileName}", "w")
-    newFile.write(finalText)
-    newFile.close()
-    baseFile.close()
-    print(f"\nUpdates are in the file Linter_{fileName}")
-
+    # check if file can be opened
+    try:
+        baseFile = open(fileName)
+        # set Json Data in newLine and breakSentence
+        newLine, breakSentence = setJsonData()
+        finalText = linterLatex(baseFile, breakSentence, int(newLine))
+        newFile = open(f"Linter_{fileName}", "w")
+        newFile.write(finalText)
+        newFile.close()
+        baseFile.close()
+        print(f"\nUpdates are in the file Linter_{fileName}")
+    except:
+        print("File not found ==> ", fileName)
+        return
 
 
 def addTaps(text, tabs):
@@ -129,3 +133,13 @@ def setJsonData():
     else:
         breakSentence = False
     return newLine, breakSentence
+
+
+# chekc file type
+def checkFileType(fileName):
+    jsonData = getJsonData()
+    # check if file type  is in json default values
+    if fileName.split(".")[-1] in jsonData["difault"]["fileTypes"]:
+        return True
+    else:
+        return False

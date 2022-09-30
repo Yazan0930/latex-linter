@@ -13,13 +13,17 @@ args = parser.parse_args()
 
 def main():
     if args.file:
-       functions.startLintering(args.file)
+        if functions.checkFileType(args.file):
+            functions.startLintering(args.file)
+        else:
+            print("File is not a (.tex or .bib or .tikz)  LaTex file type")
     elif args.breakSentence:
         # update jsonFile
         functions.updateConfig(functions.getJsonData(), "breakSentence", args.breakSentence)
         print(f"\nNewline after a sentence is now {args.breakSentence}")
 
     elif args.lines:
+        # update jsonFile
         functions.updateConfig(functions.getJsonData(), "newLine", args.lines)
         print(f"\nBlank lines before section, chapter, etc. is now {args.lines}")
     else:
