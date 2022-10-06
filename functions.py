@@ -37,6 +37,9 @@ def breakUpSentences(line, newLine = "\n"):
 def addNewLines(line, number = 0):
     return (number * "\n") + line
 
+def addSpaceInComment(text):
+    return text.replace("%", "% ")
+
 
 def linterLatex(f, betterGitSupport, lineBreakSize):
     finalText = "" # final text to be written to file
@@ -66,7 +69,7 @@ def linterLatex(f, betterGitSupport, lineBreakSize):
             finalText += breakUpSentences(line, "\n")
 
         elif "%" == line[0]:
-            finalText += line.replace("%", "% ")
+            finalText += addSpaceInComment(line)
 
         elif "\\" == line[0] and lines < lineBreakSize:
             n = len(finalText)
