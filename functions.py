@@ -1,5 +1,3 @@
-
-from re import L
 import json
 
 
@@ -80,7 +78,8 @@ def linterLatex(f, betterGitSupport, lineBreakSize):
                     break
 
             if lines-1 < lineBreakSize:
-                finalText += addNewLines(line, (lineBreakSize))
+                finalText += addNewLines(line, (lineBreakSize - lines +1))
+
             elif lines-1 > lineBreakSize:
                 endIndex = len(finalText) - (lines-1 - lineBreakSize)
                 finalText = finalText[:endIndex]
@@ -127,11 +126,6 @@ def setJsonData():
         newLine = jsonData["difault"]["newLine"]
         breakSentence = jsonData["difault"]["breakSentence"]
 
-    # make breakSentence from string to boolean
-    if breakSentence == "True":
-        breakSentence = True
-    else:
-        breakSentence = False
     return newLine, breakSentence
 
 

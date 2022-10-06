@@ -1,6 +1,4 @@
-from pickle import TRUE
 import functions
-from tabnanny import check
 import argparse
 
 parser = argparse.ArgumentParser(description='Linter rols.')
