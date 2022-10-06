@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import functions
 import argparse
 
