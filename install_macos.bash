@@ -17,8 +17,9 @@ echo "alias latex-linter='index.py'" >> $HOME/.zshrc
 # create alias latex-linter to $HOME/bin/index.py
 echo "alias latex-linter='index.py'" >> ~/.bash_profile
 
+# reload bash profile
+source ~/.bash_profile
+
 # give permission to execute index.py
 chmod +x $HOME/bin/latex-linter/index.py
 
-# reload bash profile
-source ~/.bash_profile
