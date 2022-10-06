@@ -1,1 +1,1 @@
-{"difault": {"breakSentence": false, "newLine": 0, "fileTypes": ["tex", "bib", "tikz"]}, "custom": {"newLine": "5", "breakSentence": true}}
+{"difault": {"breakSentence": false, "newLine": 0, "fileTypes": ["tex", "bib", "tikz"]}, "custom": {"newLine": "6", "breakSentence": "True"}}
