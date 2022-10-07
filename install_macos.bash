@@ -23,3 +23,5 @@ source ~/.bash_profile
 # give permission to execute index.py
 chmod +x $HOME/bin/latex-linter/index.py
 
+# reload bash profile
+source ~/.bash_profile

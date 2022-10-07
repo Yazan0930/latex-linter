@@ -1,5 +1,4 @@
 #!/usr/local/bin/python3
-# Den första raden kallas shebang, och den talar om för systemet att detta är en python-fil.
 
 import json
 from pathlib import Path
