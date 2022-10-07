@@ -1,7 +1,9 @@
 #!/usr/local/bin/python3
 
 import functions
+# argparse library makes it easy to write user-friendly command-line interfaces.
 import argparse
+
 
 parser = argparse.ArgumentParser(description='Linter rols.')
 parser.add_argument('-f', '--file', help='File to be linted')

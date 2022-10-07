@@ -1,5 +1,3 @@
-import string
-import pytest
 import functions
 
 def test_add_taps():
@@ -8,6 +6,7 @@ def test_add_taps():
 
 def test_new_lines():
     string = "This is a test"
+    #if condition returns True, then nothing happens:
     assert functions.addNewLines(string, 1) == "\nThis is a test"
 
 def test_break_up_sentences():
