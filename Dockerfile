@@ -11,10 +11,13 @@ RUN apt install git -y
 RUN pip3 install -U  pytest
 
 # set working directory
-WORKDIR /app
+WORKDIR /root/app
+
 # download a github repo
-RUN git clone https://github.com/Yazan0930/latex-linter.git
+ADD https://github.com/Yazan0930/latex-linter/releases/download/installer/install_macos.bash /root/app/install_macos.bash
+RUN bash install_macos.bash
 
-COPY . .
+WORKDIR /root/files
 
-CMD ["docker run -it linter /bin/bash"]
+
+CMD ["/bin/bash"]
