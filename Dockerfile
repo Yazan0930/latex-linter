@@ -1,16 +1,18 @@
-FROM python:3.9
+# get python image
+FROM ubuntu:latest
 
-# git clone https://github.com/Yazan0930/latex-linter $HOME/bin/latex-linter
-# cd $HOME/bin/latex-linter
-# docker build -t latex-linter .
-# docker run -it latex-linter   # to run the container
-# docker run -it latex-linter /bin/bash   # to run the container and get a shell
+RUN apt update
+RUN apt install python3-pip -y
 
-RUN git clone
+# insatll git
+RUN apt install git -y
 
-
-RUN pip install --no-cache-dir -r requirements.txt
+# set working directory
+WORKDIR /app
+# download a github repo
+RUN git clone https://github.com/Yazan0930/latex-linter.git
 
 COPY . .
 
-CMD [ "python3", "index.py -h" ]
+CMD [ "python3", "-m" ,"run", "--host=0.0.0.0"]
+# docker run -it linter /bin/bash

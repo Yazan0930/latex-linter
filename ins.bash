@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 if [ "$OS" = "Windows_NT" ]; then
     # Windows
     echo "Windows"
