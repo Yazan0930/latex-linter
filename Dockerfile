@@ -15,9 +15,9 @@ WORKDIR /root/app
 
 # download a github repo
 ADD https://github.com/Yazan0930/latex-linter/releases/download/installer/install_macos.bash /root/app/install_macos.bash
-RUN bash install_macos.bash
+RUN bash install_macos.bash 
 
 WORKDIR /root/files
 
 
-CMD ["/bin/bash"]
+CMD ["source ~/.bash_profile"]
