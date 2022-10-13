@@ -32,3 +32,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# python is the language that we are using to code the program, and if __name__ == "__main__": is a special code that allows you to execute the code in the main function.
