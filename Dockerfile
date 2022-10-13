@@ -7,6 +7,9 @@ RUN apt install python3-pip -y
 # insatll git
 RUN apt install git -y
 
+#install pytest
+RUN pip3 install -U  pytest
+
 # set working directory
 WORKDIR /app
 # download a github repo
@@ -14,5 +17,4 @@ RUN git clone https://github.com/Yazan0930/latex-linter.git
 
 COPY . .
 
-CMD [ "python3", "-m" ,"run", "--host=0.0.0.0"]
-# docker run -it linter /bin/bash
+CMD ["docker run -it linter /bin/bash"]
