@@ -14,11 +14,11 @@ def startLintering(fileName):
         # set Json Data in newLine and breakSentence
         newLine, breakSentence = setJsonData()
         finalText = linterLatex(baseFile, breakSentence, int(newLine))
-        newFile = open(f"Linter_{fileName}", "w")
+        newFile = open(f"linter_{fileName}", "w")
         newFile.write(finalText)
         newFile.close()
         baseFile.close()
-        print(f"\nUpdates are in the file Linter_{fileName}")
+        print(f"\nUpdates are in the file linter_{fileName}")
     except:
         print("File not found ==> ", fileName)
         return

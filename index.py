@@ -12,22 +12,42 @@ parser.add_argument('-l', '--lines', help='Blank lines before section, chapter, 
 args = parser.parse_args()
 
 
-
 def main():
+
+    if args.breakSentence:
+        # update jsonFile
+        if args.breakSentence == "True" or args.breakSentence == "true":
+            functions.updateConfig(functions.getJsonData(), "breakSentence", True)
+            print(f"\nNewline after a sentence is now {args.breakSentence}")
+        elif args.breakSentence == "False" or args.breakSentence == "false":
+            functions.updateConfig(functions.getJsonData(), "breakSentence", False)
+            print(f"\nNewline after a sentence is now {args.breakSentence}")
+        else:
+            print("Invalid argument for breakSentence option (True/False)")
+
+    if args.lines:
+        # update jsonFile
+        if args.lines.isdigit():
+            functions.updateConfig(functions.getJsonData(), "newLine", int(args.lines))
+            print(f"\nBlank lines before section, chapter, etc. is now {args.lines}")
+        else:
+            print("Invalid argument for lines option (number)")
+
     if args.file:
         if functions.checkFileType(args.file):
             functions.startLintering(args.file)
         else:
             print("File is not a (.tex or .bib or .tikz)  LaTex file type")
-    if args.breakSentence:
-        # update jsonFile
-        functions.updateConfig(functions.getJsonData(), "breakSentence", args.breakSentence)
-        print(f"\nNewline after a sentence is now {args.breakSentence}")
+    # if args.file:
+    #     fileName = args.file
+    #     print("File to be linted: ", fileName)
+    # if args.breakSentence:
+    #     gitSoport = args.breakSentence
+    #     print("Newline after a sentence for better git support: ", gitSoport)
+    # if args.lines:
+    #     amountLines = args.lines
+    #     print("Blank lines before section, chapter, etc. (number adjustable): ", amountLines)
 
-    if args.lines:
-        # update jsonFile
-        functions.updateConfig(functions.getJsonData(), "newLine", args.lines)
-        print(f"\nBlank lines before section, chapter, etc. is now {args.lines}")
 
 
 if __name__ == "__main__":
