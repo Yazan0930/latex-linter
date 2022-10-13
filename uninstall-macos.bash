@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# remove $HOME/bin/latex-linter
-rm -rf $HOME/bin/latex-linter
+# remove $HOME/app/latex-linter
+rm -rf $HOME/app/latex-linter
 
 # remove $HOME/bin from $PATH
 sed -i '' '/export PATH=$HOME\/bin\/latex-linter:$PATH/d' $HOME/.bash_profile

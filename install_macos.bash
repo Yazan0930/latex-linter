@@ -6,7 +6,7 @@ mkdir -p $HOME/app
 git clone https://github.com/Yazan0930/latex-linter $HOME/app/latex-linter
 
 # add $HOME/bin to $PATH
-echo "export PATH=$HOME/bin/latex-linter:$PATH" >> $HOME/.bash_profile
+echo "export PATH=$HOME/app/latex-linter:$PATH" >> $HOME/.bash_profile
 
 # add to .profile
 echo "alias latex-linter='index.py'" >> $HOME/.bash_profile

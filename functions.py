@@ -105,15 +105,13 @@ def linterLatex(f, betterGitSupport, lineBreakSize):
 
 def updateConfig(jsonData, key, value):
     jsonData["custom"][key] = value
-    #jsonFile = open(HOME + "/bin/latex-linter/config.json", "w")
-    jsonFile = open("config.json", "w")
+    jsonFile = open(HOME + "/bin/latex-linter/config.json", "w")
     jsonFile.write(json.dumps(jsonData))
     jsonFile.close()
 
 # get json data
 def getJsonData():
-    #jsonFile = open(HOME + "/bin/latex-linter/config.json")
-    jsonFile = open("config.json")
+    jsonFile = open(HOME + "/bin/latex-linter/config.json")
     jsonData = json.load(jsonFile)
     jsonFile.close()
     return jsonData
