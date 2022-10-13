@@ -1,4 +1,4 @@
-#!/usr/local/bin/pythons
+#!/usr/local/bin/python
 
 import functions
 # argparse library makes it easy to write user-friendly command-line interfaces.
