@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source ~/.bash_profile
 
 
 # Create folder $HOME/bin
@@ -29,3 +28,4 @@ chmod +x $HOME/app/latex-linter/index.py
 
 # reload bash profile
 source ~/.bash_profile
+

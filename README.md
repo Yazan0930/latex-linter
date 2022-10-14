@@ -1,3 +1,12 @@
+docker build -t latex-linter .
+
+docker run -it latex-linter /bin/bash
+
+
+
+use: bash install_macos.bash
+
+
 to import a tex file from the host to docker continer
 use: docker cp file.name c92c843d5e88:root/files
 
