@@ -1,12 +1,15 @@
 #!/bin/bash
 
 @REM check if ther is a python or python3 installed on the system if not, install python3
-if ! command -v python3 &> /dev/null
-then
-    echo "python3 could not be found"
+
+
+
+if (! command -v python3 &> /dev/null) {
+	echo "python3 could not be found"
     echo "installing python3"
     sudo apt-get install python3
-fi
+}
+
 
 @REM ckreat a folder in user home directory
 mkdir ~/Desktop/bin
