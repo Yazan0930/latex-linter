@@ -12,10 +12,37 @@ RUN pip3 install -U  pytest
 
 WORKDIR /root/files
 
-# set working directory
+# Create folder $HOME/app
 WORKDIR /root/app
 
-# download a github repo
-ADD https://github.com/Yazan0930/latex-linter/releases/download/installer/install_macos.bash /root/app/install_macos.bash
+# pull code from github to $HOME/bin
+RUN git clone https://github.com/Yazan0930/latex-linter.git /root/app/latex-linter
 
-CMD ["source ~/.bash_profile"]
+# add $HOME/bin to $PATH
+ENV PATH="/root/app/latex-linter:${PATH}"
+#echo "export PATH=$HOME/app/latex-linter:$PATH" >> $HOME/.bash_profile
+
+# add to .profile
+RUN echo "export PATH=/root/app/latex-linter:$PATH" >> $HOME/.profile
+#echo "alias latex-linter='index.py'" >> $HOME/.bash_profile
+
+# add to .zshrc
+RUN echo "export PATH=/root/app/latex-linter:$PATH" >> $HOME/.zshrc
+#echo "alias latex-linter='index.py'" >> $HOME/.zshrc
+
+# create alias latex-linter to $HOME/app/latex-linter/index.py
+#echo "alias latex-linter='index.py'" >> ~/.bash_profile
+RUN echo "alias linter='python3 $HOME/app/latex-linter/index.py'" >> ~/.bashrc
+
+# give permission to execute index.py
+RUN chmod +x $HOME/app/latex-linter/index.py
+#chmod +x $HOME/app/latex-linter/index.py
+
+# reload bash profile
+RUN echo "source ~/.bash_profile" >> ~/.bashrc
+#source ~/.bash_profile
+
+WORKDIR /root
+
+CMD ["echo", "Run: docker run -it latex-linter /bin/bash"]
+
