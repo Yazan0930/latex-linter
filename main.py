@@ -23,7 +23,7 @@ def main():
             functions.updateConfig(functions.getJsonData(), "breakSentence", False)
             print(f"\nNewline after a sentence is now {args.breakSentence}")
         else:
-            print("Invalid argument for breakSentence option (True/False)")
+            return print(args.breakSentence + ": Invalid argument for breakSentence option (True/False)")
 
     if args.lines:
         # update jsonFile
@@ -31,22 +31,13 @@ def main():
             functions.updateConfig(functions.getJsonData(), "newLine", int(args.lines))
             print(f"\nBlank lines before section, chapter, etc. is now {args.lines}")
         else:
-            print("Invalid argument for lines option (number)")
+            return print(args.lines + ": Invalid argument for lines option (number)")
 
     if args.file:
         if functions.checkFileType(args.file):
             functions.startLintering(args.file)
         else:
-            print("File is not a (.tex or .bib or .tikz)  LaTex file type")
-    # if args.file:
-    #     fileName = args.file
-    #     print("File to be linted: ", fileName)
-    # if args.breakSentence:
-    #     gitSoport = args.breakSentence
-    #     print("Newline after a sentence for better git support: ", gitSoport)
-    # if args.lines:
-    #     amountLines = args.lines
-    #     print("Blank lines before section, chapter, etc. (number adjustable): ", amountLines)
+            return print(args.file +": File is not a (.tex or .bib or .tikz)  LaTex file type")
 
 
 
