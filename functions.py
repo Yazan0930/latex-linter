@@ -54,7 +54,7 @@ def linterLatex(f, betterGitSupport, lineBreakSize):
     beginCounter = -1
 
     for line in f:
-        if "begin{" in line and "{document" not in line or begin != "":
+        if "begin{" in line and "{document" not in line and "%" not in line[0:9] or begin != "":
             if "begin{" in line:
                 begin = line
                 beginCounter += 1
