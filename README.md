@@ -63,8 +63,9 @@ optional arguments:
 
 ### Unit Tests
 
-Must have the code map downloded in the divais
+Must have the code files downloaded to your device
 To download use [link](https://github.com/Yazan0930/latex-linter/releases/download/v1.0.0/latex-linter.zip)
+
 Must have pytest installd ```pip3 install pytest```
 
 Here is how you run unit tests :-P 
