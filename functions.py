@@ -2,10 +2,12 @@
 
 import json
 from pathlib import Path
+import os
 
 
-HOME = str(Path.home())
-# 'pathlib' är ett bibliotek som låter oss arbeta med filer och mappar i Python.
+def getPath():
+    return os.path.dirname(os.path.realpath(__file__))
+
 
 def startLintering(fileName):
     # check if file can be opened
@@ -105,13 +107,13 @@ def linterLatex(f, betterGitSupport, lineBreakSize):
 
 def updateConfig(jsonData, key, value):
     jsonData["custom"][key] = value
-    jsonFile = open("/Library/Frameworks/Python.framework/Versions/3.9/bin/config.json", "w")
+    jsonFile = open(getPath() + "/config.json", "w")
     jsonFile.write(json.dumps(jsonData))
     jsonFile.close()
 
 # get json data
 def getJsonData():
-    jsonFile = open("/Library/Frameworks/Python.framework/Versions/3.9/bin/config.json")
+    jsonFile = open(getPath() + "/config.json")
     jsonData = json.load(jsonFile)
     jsonFile.close()
     return jsonData
