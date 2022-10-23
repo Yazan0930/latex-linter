@@ -1,16 +1,16 @@
 # Latex linter
 
-> (La)TeX is a typesetting system that was designed and written by Donald Knuth and first 
-released in 1978. TeX is a popular means of typesetting complex mathematical formulae 
-and has become the standard for academic publishing. 
-While (La)TeX has been noted as one of the most sophisticated digital typographical 
-systems, it lacks a fast, modern, configurable linter. A linter is a static code analysis tool 
+> (La)TeX is a typesetting system that was designed and written by Donald Knuth and first
+released in 1978. TeX is a popular means of typesetting complex mathematical formulae
+and has become the standard for academic publishing.
+While (La)TeX has been noted as one of the most sophisticated digital typographical
+systems, it lacks a fast, modern, configurable linter. A linter is a static code analysis tool
 used to flag programming errors, bugs, stylistic errors and suspicious constructs.
 
-> In this project, we developed a linter for TeX files. The linter ensures common 
-stylistic and configurable rules for TeX files and, therefore, eases the discussion on, 
-merging, and exchanging of TeX content. Since static code analysis can be a non-trivial task, 
-we focus on high code quality, good software engineering, and architecture over more 
+> In this project, we developed a linter for TeX files. The linter ensures common
+stylistic and configurable rules for TeX files and, therefore, eases the discussion on,
+merging, and exchanging of TeX content. Since static code analysis can be a non-trivial task,
+we focus on high code quality, good software engineering, and architecture over more
 features (e.g., new rules).
 
 #### OBS! Things that need to be known
@@ -27,20 +27,23 @@ You need to have a command-line tool
 
 ### Installing
 
-Installation steps are necessary so go through each step to do so 
+Installation steps are necessary so go through each step to do so
 
+Step into the directory where you downloaded the file
+
+RUN:
 ```
 pip install latex_linter-0.0.1-py3-none-any.whl
 ```
 
 ### Uninstalling
 
-Run:
+You can uninstall the package by running from any directory:
 ```
 pip uninstall latex_linter-0.0.1-py3-none-any.whl
 ```
 
-## Running 
+## Running
 
 ### Latex Linter
 
@@ -72,12 +75,12 @@ To download use [link](https://github.com/Yazan0930/latex-linter/releases/downlo
 
 Must have pytest installd ```pip3 install pytest```
 
-Here is how you run unit tests :-P 
+Here is how you run unit tests :-P
 
 ```
-pytest -rP 
+pytest -rP
 ```
 
 ## License
 
-MIT License it is open sourcing 
+MIT License it is open sourcing
