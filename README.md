@@ -13,6 +13,10 @@ merging, and exchanging of TeX content. Since static code analysis can be a non-
 we focus on high code quality, good software engineering, and architecture over more 
 features (e.g., new rules).
 
+#### OBS! Things that need to be known
+> For environment blocks ( \begin{itemize} ... \end{itemize}) the only linter rule that gonna not working there is "Blank lines before section, chapter, etc. (number adjustable)". The resone for it that the file gonna be unclear for the rest of rules.
+
+
 ## Getting Started
 
 You need to have a command-line tool
